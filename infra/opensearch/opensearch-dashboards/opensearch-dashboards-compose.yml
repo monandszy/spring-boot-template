@@ -8,7 +8,7 @@ services:
       - "5601"
     environment:
       OPENSEARCH_HOSTS: '["http://opensearch-node:9200"]'
-      DISABLE_SECURITY_DASHBOARDS_PLUGIN: 'true'
+      DISABLE_SECURITY_DASHBOARDS_PLUGIN: "true"
 #    volumes:
 #        - ./dashboards.yml:/usr/share/opensearch-dashboards/config/opensearch_dashboards.yml
     depends_on:
