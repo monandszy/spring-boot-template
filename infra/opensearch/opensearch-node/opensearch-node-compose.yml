@@ -1,0 +1,23 @@
+services:
+  opensearch-node:
+    image: opensearchproject/opensearch:${OPENSEARCH_VERSION}
+    container_name: observability-opensearch
+    hostname: opensearch-node
+    env_file: .env
+    environment:
+      - discovery.type=single-node
+      - DISABLE_SECURITY_PLUGIN=true
+    volumes:
+      - opensearch-data:/usr/share/opensearch/data
+    ports:
+      - "9200:9200"
+      - "9600:9600"
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:9200/_cluster/health" ]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+
+volumes:
+  opensearch-data:

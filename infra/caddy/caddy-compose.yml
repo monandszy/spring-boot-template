@@ -1,0 +1,16 @@
+services:
+  caddy:
+    image: caddy:${CADDY_VERSION}
+    container_name: networking-caddy
+    hostname: caddy
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - ./conf:/etc/caddy
+      - ./data:/data
+      - ./config:/config
+    networks:
+      - networking

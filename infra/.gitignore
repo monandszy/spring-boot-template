@@ -1,0 +1,14 @@
+# Environment
+.env
+
+# Core infrastructure data volumes
+/caddy/config/
+/caddy/data/
+/postgres/data/
+
+# Observability data volumes
+/opensearch/data/
+/opensearch/nodes/
+/opensearch/opensearch-node/opensearch/nodes/
+/opensearch/opensearch-node/opensearch/data/
+/prometheus/data/

@@ -1,4 +1,3 @@
 FROM eclipse-temurin:21.0.3_9-jdk-alpine as build
-ARG JAR_PATH
-COPY ${JAR_PATH} ./app.jar
+COPY build/libs/*-SNAPSHOT.jar ./app.jar
 ENTRYPOINT ["java","-jar","/app.jar"]

@@ -1,0 +1,12 @@
+services:
+  cloudflared:
+    image: cloudflare/cloudflared:${CLOUDFLARED_VERSION}
+    container_name: networking-cloudflared
+    hostname: cloudflared
+    restart: unless-stopped
+    entrypoint: "cloudflared"
+    volumes:
+      - ./conf:/etc/cloudflared
+      - ./:/root/.cloudflared
+    networks:
+      - networking
