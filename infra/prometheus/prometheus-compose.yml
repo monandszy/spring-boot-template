@@ -4,6 +4,7 @@ services:
     container_name: observability-prometheus
     hostname: prometheus
     restart: unless-stopped
+    user: root
     ports:
       - "9090:9090"
     volumes:

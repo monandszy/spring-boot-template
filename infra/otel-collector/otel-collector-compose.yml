@@ -4,6 +4,7 @@ services:
     container_name: observability-otel
     hostname: otel-collector
     restart: unless-stopped
+    user: "0"
     volumes:
       - ./conf:/etc/otelcol
     ports:

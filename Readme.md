@@ -7,9 +7,6 @@ This repository serves as a foundational blueprint, establishing pragmatic, stru
 Use the provided `Makefile` to easily build and manage the project:
 
 - **`make build`**: Build the application backend using Gradle.
-- **`make run`**: Run the Spring Boot application locally.
-- **`make test`**: Run the backend test suite.
-- **`make clean`**: Clean the build directory.
 - **`make up`**: Bring up the local Docker data, networking, and observability stacks.
 - **`make down`**: Tear down the Docker infrastructure stack.
 - **`make deploy`**: Completely builds the application container and deploys it in Docker utilizing variables housed inside `app/.env`.
