@@ -5,7 +5,7 @@ services:
     hostname: otel-collector
     restart: unless-stopped
     volumes:
-      - ./otel.yml:/etc/otelcol/config.yaml
+      - ./conf:/etc/otelcol
     ports:
       - "4317:4317"
       - "4318:4318"

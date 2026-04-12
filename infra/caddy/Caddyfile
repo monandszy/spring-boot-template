@@ -1,3 +1,0 @@
-localhost {
-    reverse_proxy app-template-dev:8080
-}

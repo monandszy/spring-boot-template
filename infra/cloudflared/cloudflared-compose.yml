@@ -6,7 +6,7 @@ services:
     restart: unless-stopped
     entrypoint: "cloudflared"
     volumes:
-      - ./conf.yml:/etc/cloudflared/conf.yml
+      - ./conf:/etc/cloudflared
       - ./:/root/.cloudflared
     networks:
       - networking
