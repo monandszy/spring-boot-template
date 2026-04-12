@@ -1,0 +1,12 @@
+include:
+  - otel-collector/otel-collector-compose.yml
+  - jaeger-tracing/jaeger-tracing-compose.yml
+  - opensearch/opensearch-node/opensearch-node-compose.yml
+  - opensearch/opensearch-dashboards/opensearch-dashboards-compose.yml
+  - opensearch/data-prepper/data-prepper-compose.yml
+  - prometheus/prometheus-compose.yml
+
+networks:
+  default:
+    driver: bridge
+    name: observability

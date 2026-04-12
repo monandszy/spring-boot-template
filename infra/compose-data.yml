@@ -1,0 +1,11 @@
+include:
+  - postgres/postgres-compose.yml
+  - rabbitmq/rabbitmq-compose.yml
+
+networks:
+  default:
+    driver: bridge
+    name: data
+
+volumes:
+  pgdata:

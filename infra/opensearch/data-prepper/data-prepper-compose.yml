@@ -1,0 +1,12 @@
+services:
+  data-prepper:
+    image: opensearchproject/data-prepper:${DATA_PREPPER_VERSION}
+    container_name: observability-data-prepper
+    hostname: data-prepper
+    restart: unless-stopped
+    ports:
+      - "4900:4900"
+      - "21892"
+    volumes:
+      - ./pipelines:/usr/share/data-prepper/pipelines
+#      - ./data-prepper.yaml:/usr/share/data-prepper/data-prepper-config.yaml

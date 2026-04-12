@@ -1,0 +1,12 @@
+include:
+  - caddy/caddy-compose.yml
+  - cloudflared/cloudflared-compose.yml
+
+networks:
+  networking:
+    driver: bridge
+    name: networking
+  app-template-prod:
+    external: true
+  app-template-dev:
+    external: true

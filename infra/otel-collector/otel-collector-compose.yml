@@ -1,0 +1,15 @@
+services:
+  otel-collector:
+    image: otel/opentelemetry-collector:${OTEL_VERSION}
+    container_name: observability-otel
+    hostname: otel-collector
+    restart: unless-stopped
+    volumes:
+      - ./otel.yml:/etc/otelcol/config.yaml
+    ports:
+      - "4317:4317"
+      - "4318:4318"
+      - "8889"
+    depends_on:
+      - data-prepper
+      - jaeger-tracing

@@ -1,0 +1,12 @@
+services:
+  prometheus:
+    image: prom/prometheus:${PROMETHEUS_VERSION}
+    container_name: observability-prometheus
+    hostname: prometheus
+    restart: unless-stopped
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    depends_on:
+      - otel-collector

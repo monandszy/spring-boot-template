@@ -1,0 +1,15 @@
+services:
+  jaeger-tracing:
+    image: jaegertracing/all-in-one:${JAEGER_VERSION:-1.60.0}
+    container_name: observability-jaeger
+    hostname: jaeger
+    restart: unless-stopped
+    environment:
+      - SPAN_STORAGE_TYPE=opensearch
+      - ES_SERVER_URLS=http://opensearch-node:9200
+    ports:
+      - "16686:16686"
+      - "4317"
+    depends_on:
+      opensearch-node:
+        condition: service_healthy
