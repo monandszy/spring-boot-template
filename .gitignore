@@ -1,0 +1,53 @@
+# Ignore Gradle
+.gradle
+build
+
+# Compiled class file
+*.class
+# Log file
+*.log
+# BlueJ files
+*.ctxt
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+# Package Files #
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+replay_pid*
+
+/.idea/
+/docker/caddy/config/
+/docker/caddy/data/
+/docker/observability/grafana/
+/docker/observability/loki/
+/docker/observability/prometheus/
+/docker/observability/tempo/
+/docker/postgres/data/
+**/Authorization.class
+
+
+# Extra Docker data volumes
+/docker/observability/opensearch/nodes/
+/docker/observability/opensearch/data/
+
+# IDE
+.vscode/
+*.iml
+*.iws
+*.ipr
+.idea/
+
+# Environment
+.env
+.env.*
+
+# Mac
+.DS_Store
