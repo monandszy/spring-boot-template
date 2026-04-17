@@ -1,34 +1,28 @@
-# Application Details
+# App Template (Backend + API)
 
-This directory contains the Spring Boot application built with Spring Modulith and Gradle Kotlin DSL.
+This module is a backend Spring Boot template
 
-## Application Architecture
+## Applied Practices
 
-`code.TemplateApp` is the main class annotated with `@Modulithic`. It sets the JVM default timezone to UTC at startup.
+- Hexagonal structure with vertical slices:
+	- `modules/<module>/domain`
+	- `modules/<module>/ports/in`
+	- `modules/<module>/services`
+	- `modules/<module>/mappers`
+	- `entrypoints/http`
+- Quality tools:
+	- PMD
+	- JaCoCo
+	- Formatter via Spotless
 
-### Modulith Structure
+## API Endpoint
 
-`src/main/java/code/modules` contains domain-specific modules (e.g., `catnips`, `accounts`, `pots`).
-- **CommandFacade**: The public mutation API. Accepts DTOs, converts to domain objects, persists via DAO, and publishes `ApplicationEvent`s.
-- **QueryFacade**: Read-only facade composing DTOs for the UI/API without side-effects.
-- **Service/Data/Util**: Domain boundaries containing actual business rules, models, persistence repositories, and MapStruct mappers.
+- `GET /api/v1/status`
+	- Returns module status payload (`module`, `status`, `checkedAt`)
 
-Modules communicate via Spring application events (see `src/main/java/code/events`) rather than calling internals of other modules.
+## Swagger / OpenAPI
 
-### Web & Security
-
-- **Security**: Controlled via `SecurityConfig.java`. Can be disabled for dev/tests (`spring.security.enabled=false`). The default includes a form-based login at `/login`.
-- **Frontend & HTMX**: `HomePage.java` returns full Thymeleaf pages for standard requests, and partial fragments when the `HX-Request` header is detected, enabling seamless HTMX-driven interactions.
-
-### Persistence & Initialization
-
-- **Database Initialization**: `DatabaseInitializer.java` wires the active profile and database variables to dynamically handle database creation (`CREATE DATABASE`) and schema setup via a tuned HikariDataSource.
-- **Authority Seeding**: `DataInitializer.java` listens for `ContextRefreshedEvent` and inserts essential roles/authorities on startup.
-
-### Testing Strategy
-
-Tests align with module boundaries and CQRS separation:
-1. **Unit Tests (Module-Internal)**: Target pure logic and utilities, isolated from the Spring context.
-2. **Integration Tests**: Verify transactional boundaries and module event publishing through a sliced per-module Spring Context.
-3. **Web / Controller Tests**: Assert proper rendering, HTMX fragment handling, Auth, utilizing `@WebMvcTest` and WireMock.
-4. **End-to-End Tests**: Full application workflows evaluating cross-module boundaries with Testcontainers.
+- OpenAPI JSON:
+	- `GET /api-docs`
+- Swagger UI:
+	- `/swagger-ui`
